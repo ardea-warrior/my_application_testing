@@ -36,7 +36,7 @@
     ?>
             </tbody>
     </table>
-    <button id="btn-reload">Submit</button>
+    <button id="btn-reload">Reload</button>
 </div>
 <?php $this->load->view('common/footer'); ?>
 
