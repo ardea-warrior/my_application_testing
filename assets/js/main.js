@@ -22,6 +22,7 @@ var user_pawonAPP = {
                 data: $('#form').serialize(),
                 success: function() {
                     pawonLib.notify('saved');
+                    $('#uid').val(pawonLib.guid());
                 }
             }
         )
@@ -35,6 +36,10 @@ var user_pawonAPP = {
     doAjax: function () {
 
     },
+    
+    
 }
+
+
 
 
