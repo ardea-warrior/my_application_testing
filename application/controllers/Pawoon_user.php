@@ -17,7 +17,7 @@ class Pawoon_user extends CI_Controller {
     public function addUser() {
         $params = $this->input->post();
         $this->user->insert($params);
-        $result['data'] = $exists;
+        $result = $this->result();
         $this->output($result);
     }
     
