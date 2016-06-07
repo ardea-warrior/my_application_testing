@@ -4,16 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Description of Pawon_user
- *
+ * Controller for user processing
+ * 
+ * 
  * @author maulana
  */
 class Pawoon_user extends CI_Controller {
-
+    /**
+     * Main Action
+     */
     public function index() {
         $datas = $this->user->all();
         $this->load->view('pawoon_user/index', array('datas'=>$datas));
     }
     
+    /**
+     * Action for save user
+     */
     public function saveUser() {
         $params = $this->input->post();
         $result = $this->result();
@@ -45,7 +52,11 @@ class Pawoon_user extends CI_Controller {
         $this->output($result);
     }
     
-    
+    /**
+     * Action for check UUID with ajax
+     * 
+     * @param string $uid
+     */
     
     public function checkUID($uid) {
         
@@ -56,6 +67,10 @@ class Pawoon_user extends CI_Controller {
         
     }
     
+    /**
+     * Action for delete with ajax
+     * @param string $uuid
+     */
     public function delete($uuid='') {
        
         $result = $this->result();
@@ -73,6 +88,10 @@ class Pawoon_user extends CI_Controller {
         
     }
     
+    /**
+     * 
+     * @param string $uuid
+     */
     public function user_by_id($uuid='') {
         if ($uuid) {
             $result = $this->result();
@@ -92,7 +111,10 @@ class Pawoon_user extends CI_Controller {
         
     }
     
-    
+    /**
+     * 
+     * @return array
+     */
     
     private function result() {
         $resultData = array(
@@ -102,6 +124,11 @@ class Pawoon_user extends CI_Controller {
             );
         return $resultData;
     }
+    
+    /**
+     * 
+     * @param array $data
+     */
     
     private function output($data) {
         $this->output
