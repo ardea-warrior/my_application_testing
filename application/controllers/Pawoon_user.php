@@ -32,6 +32,11 @@ class Pawoon_user extends CI_Controller {
         
     }
     
+    public function delete() {
+        
+    }
+    
+    
     private function result() {
         $resultData = array(
             'Ver' => '0.0.1',

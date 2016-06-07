@@ -2,16 +2,45 @@
 <div id="container">
     <h2>Form Registration</h2>
     <form action="" id="form">
-        <div class="" style="display:block">
-            <label> UID </label><input type="text" value="" name="uuid" id="uid">
-        </div>
-        <div class="" style="display:block">
-                        <label> Nama </label><input type="text" value="" name ="nama">
-        </div>
-        <div class="" style="display:block">
+        <table width="600">
+            <tr>
+                <td>
+                    <label> UID </label>
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" value="" name="uuid" id="uid" disabled="">
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label> Nama </label>
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" value="" name ="nama">
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label> Alamat </label>
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="text" value="" name ="alamat">
+                </td>
+                
+            </tr>
             
-            <label> Alamat </label><input type="text" value="" name ="alamat">
-        </div>
+        </table>
     </form>
     <button id="btn">Submit</button>
     <table width="900">
