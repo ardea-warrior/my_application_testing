@@ -7,11 +7,14 @@ var user_pawonAPP = {
         $('#btn').click(function() {
             that.addUser();
         });
+        $('#btn-reload').function(function() {
+            document.location.reload();
+        }) ;
         $('#uid').val(pawonLib.guid());
         
     },
     addUser: function () {
-        pawonLib.send('/pawoon_user/addUser',
+        pawonLib.send('http://demo.ardea.me/pawoon/my_application_testing/pawoon_user/addUser',
             {
                 data: $('#form').serialize(),
                 success: function() {
