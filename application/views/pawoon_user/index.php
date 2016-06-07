@@ -42,8 +42,8 @@
             
         </table>
     </form>
-    <button id="btn">Submit</button>
-    <table width="900">
+    <button id="btn" class="btn btn-default">Submit</button>
+    <table width="900" class="table table-hover">
         <thead>
             <tr>
                 <td width ="10%" >UId</td>
@@ -65,7 +65,7 @@
     ?>
             </tbody>
     </table>
-    <button id="btn-reload">Reload</button>
+    <button id="btn-reload" class="btn btn-success">Reload</button>
 </div>
 <?php $this->load->view('common/footer'); ?>
 

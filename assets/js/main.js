@@ -12,6 +12,9 @@ var user_pawonAPP = {
         }) ;
         $('#uid').val(pawonLib.guid());
         
+        
+        
+        
     },
     addUser: function () {
         pawonLib.send('http://demo.ardea.me/pawoon/my_application_testing/pawoon_user/addUser',
@@ -23,6 +26,9 @@ var user_pawonAPP = {
             }
         )
     },
+    
+     
+    
     deleteUser: function () {
 
     },
