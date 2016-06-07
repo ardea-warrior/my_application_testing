@@ -7,7 +7,7 @@ var user_pawonAPP = {
         $('#btn').click(function() {
             that.addUser();
         });
-        $('#btn-reload').function(function() {
+        $('#btn-reload').click(function() {
             document.location.reload();
         }) ;
         $('#uid').val(pawonLib.guid());
