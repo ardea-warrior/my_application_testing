@@ -14,9 +14,18 @@ class Pawoon_user extends CI_Controller {
         $this->load->view('pawoon_user/index', array('datas'=>$datas));
     }
     
-    public function addUser() {
+    public function saveUser() {
         $params = $this->input->post();
-        $this->user->insert($params);
+        
+        //check user id exits
+        if ($this->user->isIdExists($params['uuid'])) {
+            $this->user->update($params['uuid'], $params);
+        } else {
+            $this->user->insert($params);
+        }
+        
+        
+        
         $result = $this->result();
         $this->output($result);
     }
@@ -32,9 +41,42 @@ class Pawoon_user extends CI_Controller {
         
     }
     
-    public function delete() {
+    public function delete($uuid='') {
+       
+        $result = $this->result();
+        if ($uuid) {
+            try {
+                $this->user->delete($uuid);
+            } catch (Exception $e) {
+                $result['Success'] = FALSE;
+            }
+        } else {
+            $result['Message'] = "ID not set";
+            $result['Success'] = FALSE;
+        }
+        $this->output($result);
         
     }
+    
+    public function user_by_id($uuid='') {
+        if ($uuid) {
+            $result = $this->result();
+            $data = $this->user->getById($uuid);
+            if (count($data)) {
+                $result['data'] = $data ;
+            } else {
+                $result['Message'] = "ID not found";
+                $result['Success'] = FALSE;
+            }
+            
+        } else {
+            $result['Message'] = "ID not set";
+            $result['Success'] = FALSE;
+        }
+        $this->output($result);
+        
+    }
+    
     
     
     private function result() {

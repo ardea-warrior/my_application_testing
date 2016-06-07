@@ -45,7 +45,10 @@ class MY_Model extends CI_Model{
     
     
     
-    
+    public function getById($id) {
+        return $this->db->get_where($this->name, array($this->id => $id))->row();
+        
+    }
     
     public function isIdExists($id) {
         $query = $this->db->get_where($this->name, array($this->id => $id))->result_array();
