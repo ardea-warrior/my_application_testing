@@ -2,7 +2,13 @@ $('document').ready(function() {
     user_pawonAPP.init();
 })
 var user_pawonAPP = {
+    /**
+     * initial app on document ready
+     * @returns null
+     */
+    
     init: function() {
+        //initial all components
         var that = this;
         $('#btn').click(function() {
             that.addUser();
@@ -25,6 +31,10 @@ var user_pawonAPP = {
             $('#uid-txt').val(pawonLib.guid());
         });
     },
+    /**
+     * 
+     * @returns null
+     */
     addUser: function () {
         var myForm = $('#form');
         var disabled = myForm.find(':input:disabled').removeAttr('disabled');
@@ -68,14 +78,24 @@ var user_pawonAPP = {
     },
     
      
-    
+    /**
+     * delete user function with ajax
+     * 
+     * @param object $el
+     * @returns null
+     */
     deleteUser: function ($el) {
         var d = confirm("Are you sure to delete!");
         if (d) {
             this.doDeleteUser($el.data('id'));
         }
     },
-    
+    /**
+     * processing delete user with ajax
+     * 
+     * @param string id
+     * @returns null
+     */
     doDeleteUser: function(id) {
         pawonLib.send( base_url+'pawoon_user/delete/'+id,
             {
@@ -88,7 +108,12 @@ var user_pawonAPP = {
         )
     },
     
-    
+    /**
+     * processing edit user with ajax
+     * 
+     * @param string id
+     * @returns null
+     */
     editUser: function(id) {
         pawonLib.send( base_url+'pawoon_user/user_by_id/'+id,
             {
@@ -100,12 +125,6 @@ var user_pawonAPP = {
             }
         )
     },
-    
-    
-    doAjax: function () {
-
-    },
-    
     
     
     
