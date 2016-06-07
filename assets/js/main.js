@@ -29,12 +29,38 @@ var user_pawonAPP = {
         var myForm = $('#form');
         var disabled = myForm.find(':input:disabled').removeAttr('disabled');
         var data = myForm.serialize();
+        var that = this;
         disabled.attr('disabled','disabled');
         pawonLib.send(base_url+'pawoon_user/saveUser',
             {
                 data: data,
-                success: function() {
+                success: function(response) {
                     pawonLib.notify('saved');
+                    $('#uid-txt').val(pawonLib.guid());
+                    var tbl = $('#tb-list');
+                    if (response.process == 'insert') {
+                        var str = '<tr data-id="'+response.data.uuid+'">';
+                        str += '<td>'+response.data.uuid+'</td>';
+                        str += '<td>'+response.data.nama+'</td>';
+                        str += '<td>'+response.data.alamat+'</td>';
+                        str += '<td><a class="delete-btn" href="javascript:void(0);" data-id="'+response.data.uuid+'">delete</a> | <a class="edit-btn" href="javascript:void(0);" data-id="'+response.data.uuid+'">edit</a></td>';;
+                        str += '</tr>';
+                        var $newEL = $(str);
+                        tbl.find('tbody').append($newEL);
+                        $newEL.find('.delete-btn').click(function() {
+                            that.deleteUser($(this));
+                        });
+
+                        $newEL.find('.edit-btn').click(function() {
+                            that.editUser($(this).data('id'));
+                        });
+                    } else {
+                        var row = tbl.find('tr[data-id="'+response.data.uuid+'"]');
+                        var tds = row.find('td');
+                        tds[1].innerHTML = response.data.nama;
+                        tds[2].innerHTML = response.data.alamat;
+                    }
+                    $('#form')[0].reset();
                     $('#uid-txt').val(pawonLib.guid());
                 }
             }

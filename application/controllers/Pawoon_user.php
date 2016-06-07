@@ -16,17 +16,32 @@ class Pawoon_user extends CI_Controller {
     
     public function saveUser() {
         $params = $this->input->post();
-        
+        $result = $this->result();
         //check user id exits
         if ($this->user->isIdExists($params['uuid'])) {
-            $this->user->update($params['uuid'], $params);
+            if ($this->user->isNamaExists($params['nama'], $params['uuid'])) {
+                $result['Success'] = FALSE;
+                $result['Message'] = 'Nama already Exists';
+            } else {
+                $this->user->update($params['uuid'], $params);
+                $result['process'] = 'update';
+            }
+            
+            
         } else {
-            $this->user->insert($params);
+            if ($this->user->isNamaExists($params['nama'])) {
+                $result['Success'] = FALSE;
+                $result['Message'] = 'Nama already Exists';
+            } else {
+                $this->user->insert($params);
+                $result['process'] = 'insert';
+            }
+            
         }
+        $result['data'] = $params;
         
         
         
-        $result = $this->result();
         $this->output($result);
     }
     

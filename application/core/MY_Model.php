@@ -50,6 +50,8 @@ class MY_Model extends CI_Model{
         
     }
     
+    
+    
     public function isIdExists($id) {
         $query = $this->db->get_where($this->name, array($this->id => $id))->result_array();
         return count($query)? TRUE: FALSE;
