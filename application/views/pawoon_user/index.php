@@ -48,7 +48,8 @@
             <tr>
                 <td width ="10%" >UId</td>
                 <td width ="30%">Nama</td>
-                <td width ="60%">Alamat</td>
+                <td width ="50%">Alamat</td>
+                <td width ="20%">Action</td>
             </tr>
         </thead>
         <tbody>
@@ -60,6 +61,7 @@
                 echo '<td>'. $row['uuid'].'</td>';
                 echo '<td>'. $row['nama'].'</td>';
                 echo '<td>'. $row['alamat'].'</td>';
+                echo '<td><a class="delete-btn" href="javascript:void(0);" data-id='. $row['uuid'].'>delete</a> | <a class="edit-btn" href="javascript:void(0);" data-id='. $row['uuid'].'>edit</a></td>';
             echo '</tr>';
     }
     ?>
